@@ -14,8 +14,7 @@ interface PhotoPreviewProps {
 
 export function PhotoPreview({ sheetDataUrl, onReset, onBack }: PhotoPreviewProps) {
   const handleDownload = () => {
-    // ファイル名を現在時刻から生成
-    const fileName = `id-photo-${new Date().getTime()}.jpg`;
+    const fileName = '証明写真_L判サイズで印刷してください.jpg';
     saveAs(sheetDataUrl, fileName);
   };
 
