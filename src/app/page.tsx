@@ -94,12 +94,21 @@ export default function Home() {
 
       <footer className="mt-8 text-center text-xs text-muted-foreground space-y-2">
         <p>&copy; {new Date().getFullYear()} 証明写真マスター</p>
-        <Link
-          href="/privacy"
-          className="hover:underline hover:text-foreground transition-colors"
-        >
-          プライバシーポリシー
-        </Link>
+        <div className="flex justify-center items-center gap-2">
+          <Link
+            href="/"
+            className="hover:underline hover:text-foreground transition-colors"
+          >
+            ホーム
+          </Link>
+          <span>|</span>
+          <Link
+            href="/privacy"
+            className="hover:underline hover:text-foreground transition-colors"
+          >
+            プライバシーポリシー
+          </Link>
+        </div>
       </footer>
     </div>
   );
