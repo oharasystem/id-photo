@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Upload, ImageIcon } from 'lucide-react';
+import { Upload, ImageIcon, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PhotoUploaderProps {
@@ -53,8 +53,8 @@ export function PhotoUploader({ onImageSelect }: PhotoUploaderProps) {
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">証明写真マスター</h1>
         <p className="text-muted-foreground">
-          スマホで撮ってコンビニ30円印刷。<br />
-          履歴書・免許証・パスポート対応。
+          スマホで撮ってコンビニ30円印刷<br />
+          履歴書・免許証・パスポート対応
         </p>
       </div>
 
@@ -91,11 +91,18 @@ export function PhotoUploader({ onImageSelect }: PhotoUploaderProps) {
           <ImageIcon className="w-4 h-4" />
           撮影のポイント
         </h3>
-        <ul className="list-disc list-inside space-y-1 ml-1">
+        <ul className="list-disc list-inside space-y-1 ml-1 text-foreground/80">
           <li>明るい場所で、白い壁を背景に撮影してください</li>
           <li>顔に影ができないように正面から撮影してください</li>
           <li>事前にスマホの写真アプリ等で明るさを調整しておくと綺麗に仕上がります</li>
         </ul>
+      </div>
+
+      <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800">
+        <ShieldCheck className="w-5 h-5 flex-shrink-0" />
+        <p>
+          選択した画像はサーバーへ送信されません。すべての処理はお使いの端末内で完結するため、安心してご利用いただけます。
+        </p>
       </div>
     </div>
   );

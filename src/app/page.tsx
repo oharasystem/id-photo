@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { PhotoUploader } from '@/components/features/PhotoUploader';
 import { PhotoCropper } from '@/components/features/PhotoCropper';
 import { PhotoPreview } from '@/components/features/PhotoPreview';
@@ -28,17 +29,17 @@ export default function Home() {
 
     // UIレンダリングをブロックしないように少し待つ
     setTimeout(async () => {
-        try {
-            const croppedImageCanvas = await getCroppedImg(imageSrc, croppedAreaPixels);
-            const sheet = await generatePhotoSheet(croppedImageCanvas, sizeConfig);
-            setSheetDataUrl(sheet);
-            setStep('preview');
-        } catch (e) {
-            console.error(e);
-            alert('画像の処理中にエラーが発生しました。別の画像を試してみてください。');
-        } finally {
-            setIsProcessing(false);
-        }
+      try {
+        const croppedImageCanvas = await getCroppedImg(imageSrc, croppedAreaPixels);
+        const sheet = await generatePhotoSheet(croppedImageCanvas, sizeConfig);
+        setSheetDataUrl(sheet);
+        setStep('preview');
+      } catch (e) {
+        console.error(e);
+        alert('画像の処理中にエラーが発生しました。別の画像を試してみてください。');
+      } finally {
+        setIsProcessing(false);
+      }
     }, 100);
   };
 
@@ -51,46 +52,51 @@ export default function Home() {
   };
 
   const handleBackToCrop = () => {
-      setStep('crop');
+    setStep('crop');
   }
 
   return (
     <div className="min-h-[100dvh] bg-slate-50 text-slate-900 flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
       <main className="w-full max-w-md bg-white rounded-xl shadow-sm border p-6 min-h-[600px] relative transition-all duration-300">
         {step === 'upload' && (
-            <PhotoUploader onImageSelect={handleImageSelect} />
+          <PhotoUploader onImageSelect={handleImageSelect} />
         )}
 
         {step === 'crop' && imageSrc && (
-            <PhotoCropper
-                imageSrc={imageSrc}
-                onCropConfirm={(area, config) => {
-                    setIsProcessing(true);
-                    handleCropConfirm(area, config);
-                }}
-                onCancel={() => setStep('upload')}
-            />
+          <PhotoCropper
+            imageSrc={imageSrc}
+            onCropConfirm={(area, config) => {
+              setIsProcessing(true);
+              handleCropConfirm(area, config);
+            }}
+            onCancel={() => setStep('upload')}
+          />
         )}
 
         {step === 'preview' && sheetDataUrl && (
-            <PhotoPreview
-                sheetDataUrl={sheetDataUrl}
-                onReset={handleReset}
-                onBack={handleBackToCrop}
-            />
+          <PhotoPreview
+            sheetDataUrl={sheetDataUrl}
+            onReset={handleReset}
+            onBack={handleBackToCrop}
+          />
         )}
 
         {isProcessing && (
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center space-y-4 rounded-xl">
-                <Loader2 className="w-10 h-10 animate-spin text-primary" />
-                <p className="font-medium text-muted-foreground">証明写真データを作成中...</p>
-            </div>
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center space-y-4 rounded-xl">
+            <Loader2 className="w-10 h-10 animate-spin text-primary" />
+            <p className="font-medium text-muted-foreground">証明写真データを作成中...</p>
+          </div>
         )}
       </main>
 
-      <footer className="mt-8 text-center text-xs text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} 証明写真マスター (CvPhoto Maker)</p>
-        <p>Client-side processing only. No images are uploaded to server.</p>
+      <footer className="mt-8 text-center text-xs text-muted-foreground space-y-2">
+        <p>&copy; {new Date().getFullYear()} 証明写真マスター</p>
+        <Link
+          href="/privacy"
+          className="hover:underline hover:text-foreground transition-colors"
+        >
+          プライバシーポリシー
+        </Link>
       </footer>
     </div>
   );
