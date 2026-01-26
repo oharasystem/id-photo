@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { PhotoUploader } from '@/components/features/PhotoUploader';
 import { PhotoCropper } from '@/components/features/PhotoCropper';
 import { PhotoPreview } from '@/components/features/PhotoPreview';
+import { LandingContent } from '@/components/features/LandingContent';
 import { getCroppedImg, generatePhotoSheet } from '@/lib/canvas-utils';
 import { Area } from 'react-easy-crop';
 import { PhotoSizeConfig } from '@/lib/constants';
@@ -88,6 +89,8 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {step === 'upload' && <LandingContent />}
 
       <footer className="mt-8 text-center text-xs text-muted-foreground space-y-2">
         <p>&copy; {new Date().getFullYear()} 証明写真マスター</p>
