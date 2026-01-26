@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { PhotoUploader } from '@/components/features/PhotoUploader';
 import { PhotoCropper } from '@/components/features/PhotoCropper';
 import { PhotoPreview } from '@/components/features/PhotoPreview';
@@ -57,7 +56,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-slate-50 text-slate-900 flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
+    <div className="bg-slate-50 text-slate-900 flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
       <main className="w-full max-w-md bg-white rounded-xl shadow-sm border p-6 min-h-[600px] relative transition-all duration-300">
         {step === 'upload' && (
           <PhotoUploader onImageSelect={handleImageSelect} />
@@ -91,25 +90,7 @@ export default function Home() {
       </main>
 
       {step === 'upload' && <LandingContent />}
-
-      <footer className="mt-8 text-center text-xs text-muted-foreground space-y-2">
-        <p>&copy; {new Date().getFullYear()} 証明写真マスター</p>
-        <div className="flex justify-center items-center gap-2">
-          <Link
-            href="/"
-            className="hover:underline hover:text-foreground transition-colors"
-          >
-            ホーム
-          </Link>
-          <span>|</span>
-          <Link
-            href="/privacy"
-            className="hover:underline hover:text-foreground transition-colors"
-          >
-            プライバシーポリシー
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 }
+
