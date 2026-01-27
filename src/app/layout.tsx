@@ -16,8 +16,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://id-photo.solooo.dev"),
   title: "証明写真マスター | 完全無料・登録不要・スマホで履歴書作成",
   description: "完全無料・登録不要の証明写真作成ツール。スマホで撮った写真を、履歴書・免許証・パスポートなどのサイズに合わせて自動調整し、コンビニ（L判）で印刷できるデータを作成します。",
+  openGraph: {
+    title: "証明写真マスター | 完全無料・登録不要・スマホで履歴書作成",
+    description: "完全無料・登録不要の証明写真作成ツール。スマホで撮った写真を、履歴書・免許証・パスポートなどのサイズに合わせて自動調整し、コンビニ（L判）で印刷できるデータを作成します。",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "証明写真マスター | 完全無料・登録不要・スマホで履歴書作成",
+    description: "完全無料・登録不要の証明写真作成ツール。スマホで撮った写真を、履歴書・免許証・パスポートなどのサイズに合わせて自動調整し、コンビニ（L判）で印刷できるデータを作成します。",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({

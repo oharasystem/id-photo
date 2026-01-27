@@ -105,6 +105,7 @@ export function PhotoCropper({ imageSrc, onCropConfirm, onCancel }: PhotoCropper
         </div>
 
         <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">ドラッグで移動、下のバーで拡大縮小</p>
             <div className="flex justify-between">
                 <Label>拡大・縮小</Label>
                 <span className="text-xs text-muted-foreground">{Math.round(zoom * 100)}%</span>
