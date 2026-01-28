@@ -6,7 +6,7 @@ export function Footer() {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-slate-600">
-                        &copy; {new Date().getFullYear()} 証明写真マスター
+                        © 2026 ID Photo Master / solooo.dev
                     </p>
                     <nav className="flex items-center gap-4 text-sm">
                         <Link
